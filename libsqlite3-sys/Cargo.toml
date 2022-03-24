@@ -17,6 +17,7 @@ bundled = ["cc", "bundled_bindings"]
 bundled-windows = ["cc", "bundled_bindings"]
 bundled-sqlcipher = ["bundled"]
 bundled-sqlcipher-vendored-openssl = ["bundled-sqlcipher", "openssl-sys/vendored"]
+bundled-sqlcipher-vendored-openssl-300 = ["bundled-sqlcipher", "openssl-sys/vendored-300"]
 buildtime_bindgen = ["bindgen", "pkg-config", "vcpkg"]
 sqlcipher = []
 min_sqlite_version_3_6_8 = ["pkg-config", "vcpkg"]
@@ -39,7 +40,8 @@ wasm32-wasi-vfs = []
 winsqlite3 = ["min_sqlite_version_3_7_16", "buildtime_bindgen"]
 
 [dependencies]
-openssl-sys = { version = "0.9", optional = true }
+# openssl-sys = { version = "0.9", optional = true }
+openssl-sys = { path = "../../rust-openssl/openssl-sys", optional = true }
 
 [build-dependencies]
 bindgen = { version = "0.59", optional = true, default-features = false, features = ["runtime"] }
